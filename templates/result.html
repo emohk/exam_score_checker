@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Result
+{% endblock %}
+{% block main %}
+    <h1 class="mt-5">Results</h1>
+    <div class="card mt-3">
+    <div class="card-body">
+        <p>Correct Answers: {{ correct|string }}</p>
+        <p>Incorrect Answers: {{ incorrect|string }}</p>
+        <p>Unanswered Questions: {{ unanswered|string }}</p>
+        <h3>Score: {{ (correct * 4) - incorrect }}</h3>
+        <label style="opacity: 80%;">+4 for correct and -1 for incorrect</label>
+    </div>
+    </div>
+    <form action="/result" method="post">
+        <button type = "submit" class="btn btn-primary mt-3">View Marked Response Sheet</button>
+    </form>
+{% endblock %}

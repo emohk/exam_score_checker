@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Key Manager
+{% endblock %}
+{% block main %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Key Manager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('register') }}">Add Moderator</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+          </li>
+        </ul>
+    </div>
+  </nav>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Add Key</h5>
+        </div>
+        <div class="card-body">
+          <form method="post" action="/key_manager">
+            <div class="form-group">
+              <label for="name">Key Name:</label>
+              <input autocomplete="off" type="text" class="form-control" id="name" name="name" placeholder="Enter key name" required>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+              <label for="textInput">Key Values:</label>
+              <textarea autocomplete="off" class="form-control" id="key" name = "key" id="textInput" rows="3" placeholder="Paste key values here" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="card">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Key</th>
+                <th scope="col">No of Questions</th>
+                <th scope="col"> Actions </th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for table in tables %}
+                    <tr>
+                        <td>{{ table.name }}</td>
+                        <td>{{ table.count }}</td>
+                        <td>
+                            <a href="{{ url_for('delete_key', key_name=table.name) }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+      </div>
+    </div>
+{% endblock %}
