@@ -43,10 +43,12 @@ def is_right_ans(qid, ansid, table):
     with sqlite3.connect('checker.db') as con:
         cur = con.cursor()
         command = f'SELECT ans FROM {table} WHERE qid = {qid}'
-        cur.execute(command)
-        rightans = cur.fetchall()[0][0]
+        rows = cur.execute(command).fetchall()
+        rightans = []
+        for row in rows:
+            rightans.append(row[0])
 
-    if ansid == rightans or rightans == 'Drop'.casefold or rightans == 'bonus'.casefold:
+    if ansid in rightans or rightans == 'Drop'.casefold or rightans == 'bonus'.casefold:
         return True
     else:
         return False
