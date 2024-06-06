@@ -1,7 +1,7 @@
 # Exam Score Checker
 ## Overview
 The Exam Score Checker is a tool designed to streamline the process of grading and analyzing responses from the Joint Entrance Examination (JEE) Response Sheets. This tool compares the answer key with response sheets to calculate scores automatically, simplifying the evaluation process for educators and students alike.<br>
-Visit [Exam Score Checker](https://exam-score-checker.onrender.com/)
+Visit [Exam Score Checker](https://exam-score-checker.onrender.com/)<br>
 Watch [Video Demo](https://youtu.be/IVgXxx6Z-rQ)
 
 ## Features
